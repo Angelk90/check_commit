@@ -1,0 +1,17 @@
+on:
+  workflow_dispatch
+name: Build
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Build
+        run: node build
+
+      - uses: Angelk90/publish-to-github-action@favicon
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NAME: 'Build'

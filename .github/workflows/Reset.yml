@@ -1,0 +1,22 @@
+on: 
+    workflow_dispatch
+name: Create New Branch and Reset Commits
+jobs:
+  create-new-branch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout specific branch
+        uses: actions/checkout@v4
+
+      - name: Create new branch to latest commit
+        run: |
+            git config --global user.email "actions@users.noreply.github.com"
+            git config --global user.name "Bot"
+            git checkout --orphan new-branch
+            git add .
+            git commit -m "Initial commit"
+            git push origin new-branch
+            git checkout new-branch
+            git branch -d main
+            git branch -m new-branch main

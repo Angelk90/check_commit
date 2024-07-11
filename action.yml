@@ -1,0 +1,19 @@
+name: Name
+description: Description
+
+inputs:
+  list:
+    description: List description
+    default: "[]"
+
+outputs:
+  json:
+    description: Json description
+  table:
+    description: Table description
+  code:
+    description: Code description
+
+runs:
+  using: node20
+  main: 'dist/index.js'

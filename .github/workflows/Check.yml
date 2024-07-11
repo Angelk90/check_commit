@@ -1,0 +1,12 @@
+on:
+  workflow_dispatch
+name: Check commit
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./
+        with:
+          list: "[]"
